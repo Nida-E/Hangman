@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registreer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: 'Indie Flower', cursive;
+    
+        }
+        body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-image: url('background.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        h2 {
+            color:#D9D9D9;
+        }
+        
+        .register-container {
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+            display: block;
+            margin-top: 6rem;
+            color: #D9D9D9;
+       
+        }
+        .register-container h2 {
+            font-size: 2em;
+            margin-bottom: 1rem;
+        }
+        .register-container input,
+        .register-container button {
+            width: 100%;
+            padding: 0.8rem;
+            margin: 0.5rem 0;
+            border: none;
+            border-radius: 25px;
+            background-color: rgba(255, 255, 255, 0.8);
+            font-size: 1em;
+            box-sizing: border-box;
+        }
+        .register-container button {
+            cursor: pointer;
+            
+        }
+        .register-container button:hover {
+            background-color: rgba(255, 255, 255, 1);
+            
+        }
+
+        footer {
+            width: 100%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem 0;
+            margin-top: auto; /* This will push the footer to the bottom */
+        }
+        footer img {
+            width: 100%;
+            text-align: center;
+            margin: -20px;
+
+        }
+        .back-button {
+            margin-top: 1rem;
+            padding: 0.6rem 1.2rem;
+            border: none;
+            border-radius: 25px;
+            background-color: rgba(255, 255, 255, 0.8);
+            font-size: 1em;
+            cursor: pointer;
+        }
+        .back-button:hover {
+            background-color: rgba(255, 255, 255, 1);
+        }
+
+        /* ✅ Terug-knop stijl */
+        .terug-knop {
+            position: fixed;
+            bottom: 50px;
+            left: 65px;
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #333;
+            padding: 0.6rem 4.2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 1em;
+            font-family: 'Indie Flower', cursive;
+            transition: background-color 0.3s ease;
+            z-index: 1000;
+        }
+        .terug-knop:hover {
+            background-color: rgba(255, 255, 255, 1);
+        }
+    </style>
+</head>
+<body>
+    <div class="register-container">
+        <h2>Registreer</h2>
+        <input type="email" placeholder="Email">
+        <input type="text" placeholder="Gebruikersnaam">
+        <input type="password" placeholder="Wachtwoord">
+        <button>Registreer</button>
+    </div>
+    <footer>
+        <img src="footer.png" alt="footer">
+    </footer>
+
+    <a href="loginscherm.html" class="terug-knop">← Terug</a>
+</body>
+</html>
