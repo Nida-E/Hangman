@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scorebord</title>
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: 'Indie Flower', cursive;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            background-image: url('background.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        h2 {
+            color: #D9D9D9;
+            font-size: 2.5em;
+            margin: 2rem 0 1rem 2rem;
+            text-align: center;
+        }
+
+        .score-container {
+            position: relative;
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-start;
+            padding: 2rem;
+            flex: 1;
+        }
+
+        .score-wrapper {
+            position: relative;
+            width: 350px; /* kleiner gemaakt */
+        }
+
+        .score-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .score-text {
+            position: absolute;
+            top: 40px;
+            left: 75px; /* aangepast voor kleinere breedte */
+            color: #000;
+            font-size: 1.5em;
+        }
+
+        .score-subtext {
+            position: absolute;
+            bottom: 70px;
+            left: 75px; /* aangepast voor kleinere breedte */
+            color: #000;
+            font-size: 1em;
+        }
+
+        .terug-knop {
+            position: fixed;
+            bottom: 50px;
+            left: 65px;
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #333;
+            padding: 0.6rem 4.2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 1em;
+            font-family: 'Indie Flower', cursive;
+            transition: background-color 0.3s ease;
+            z-index: 1000;
+        }
+
+        .terug-knop:hover {
+            background-color: rgba(255, 255, 255, 1);
+        }
+
+        /* ✅ Uitloggen-knop stijl */
+        .uitloggen-knop {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #333;
+            padding: 0.4rem 1.8rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 1em;
+            font-family: 'Indie Flower', cursive;
+            transition: background-color 0.3s ease;
+            z-index: 1000;
+        }
+
+        .uitloggen-knop:hover {
+            background-color: rgba(255, 255, 255, 1);
+        }
+
+        footer {
+            width: 100%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem 0;
+            margin-top: auto;
+        }
+
+        footer img {
+            width: 100%;
+            margin: -20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- ✅ Uitloggen-knop -->
+    <a href="loginscherm.html" class="uitloggen-knop">Uitloggen</a>
+
+    <h2>Raad het woord</h2>
+    <h2>Punten: 0</h2>
+
+    
+
+    <footer>
+        <img src="footer.png" alt="footer">
+    </footer>
+
+    <a href="dashboard.html" class="terug-knop">← Terug</a>
+</body>
+</html>
