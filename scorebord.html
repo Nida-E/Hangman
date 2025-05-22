@@ -84,11 +84,11 @@
             background-color: rgba(255, 255, 255, 1);
         }
 
-        /* ✅ Uitloggen-knop stijl */
+        /*  Uitloggen-knop stijl */
         .uitloggen-knop {
             position: fixed;
             top: 30px;
-            left: 30px;
+            left: 65px;
             background-color: rgba(255, 255, 255, 0.8);
             color: #333;
             padding: 0.4rem 1.8rem;
@@ -118,10 +118,55 @@
             width: 100%;
             margin: -20px;
         }
+
+        .score-info {
+            position: absolute;
+            top: 50%;
+            left: 500px;
+            transform: translateY(-50%);
+            padding: 1rem 1.5rem;
+            border-radius: 15px;
+            font-size: 1.5em;
+            color: #D9D9D9;
+            font-family: 'Indie Flower', cursive;
+            z-index: 100;
+        }
+
+        .score-buttons {
+            position: absolute;
+            top: calc(50% + 120px); /* onder de score-info */
+            left: 0px;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            z-index: 100;
+
+    
+    
+        }
+
+.score-button {
+    background-color: rgba(255, 255, 255, 0.85);
+    color: #333;
+    padding: 0.6rem 1.5rem;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 1em;
+    font-family: 'Indie Flower', cursive;
+    text-align: center;
+    width: max-content;
+    transition: background-color 0.3s ease;
+}
+
+.score-button:hover {
+    background-color: white;
+}
+
+
     </style>
 </head>
 <body>
-    <!-- ✅ Uitloggen-knop -->
+    <!--Uitloggen-knop-->
     <a href="loginscherm.html" class="uitloggen-knop">Uitloggen</a>
 
     <h2>Scorebord</h2>
@@ -134,10 +179,25 @@
         </div>
     </div>
 
+    <div class="score-info">
+        <p><strong>Hoogste score:</strong> 2000</p>
+        <p><strong>Vandaag:</strong> 7.000</p>
+        <p><strong>Gisteren:</strong> 10.000</p>
+        <p><strong>Altijd:</strong> 20.000</p>
+        <br>
+
+        <div class="score-buttons">
+            <a href="#" class="score-button">Nieuw spel - Woord toevoegen</a>
+            <a href="#" class="score-button">Nieuw spel starten</a>
+        </div>
+        
+    </div>
+    
+
     <footer>
         <img src="footer.png" alt="footer">
     </footer>
 
-    <a href="dashboard.html" class="terug-knop">← Terug</a>
+    <a href="#" class="terug-knop">← Terug</a>
 </body>
 </html>
