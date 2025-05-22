@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: 'Indie Flower', cursive;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            background-image: url('../img/background.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        h2 {
+            color: #D9D9D9;
+        }
+        .nieuwwoord-container {
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+            margin: auto;
+            padding: 1rem;
+        }
+        .nieuwwoord-container h2 {
+            font-size: 2em;
+            margin-bottom: 1rem;
+        }
+        .nieuwwoord-container input,
+        .nieuwwoord-container button {
+            width: 100%;
+            padding: 0.8rem;
+            margin: 0.5rem 0;
+            border: none;
+            border-radius: 25px;
+            background-color: rgba(255, 255, 255, 0.8);
+            font-size: 1em;
+            box-sizing: border-box;
+        }
+        .nieuwwoord-container button {
+            cursor: pointer;
+        }
+        .nieuwwoord-container button:hover {
+            background-color: rgba(255, 255, 255, 1);
+        }
+        .nieuwwoord-container a {
+            display: block;
+            margin-top: 1rem;
+            color: #D9D9D9;
+            font-size: 1.2em;
+        }
+        .nieuwwoord-container a:hover {
+            text-decoration: underline;
+        }
+        footer {
+            width: 100%;
+            text-align: center;
+        }
+        footer img {
+            display: block;
+            width: 100%;
+            height: auto;
+            margin: 0;
+        }
+        /* ✅ Uitloggen-knop stijl */
+        .uitloggen-knop {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #333;
+            padding: 0.4rem 1.8rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 1em;
+            font-family: 'Indie Flower', cursive;
+            transition: background-color 0.3s ease;
+            z-index: 1000;
+        }
+
+        .uitloggen-knop:hover {
+            background-color: rgba(255, 255, 255, 1);
+        }
+        .terug-knop {
+            position: fixed;
+            bottom: 50px;
+            left: 65px;
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #333;
+            padding: 0.6rem 4.2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 1em;
+            font-family: 'Indie Flower', cursive;
+            transition: background-color 0.3s ease;
+            z-index: 1000;
+        }
+
+        .terug-knop:hover {
+            background-color: rgba(255, 255, 255, 1);
+        }
+
+        
+    </style>
+</head>
+<body>
+     <!-- ✅ Uitloggen-knop -->
+     <a href="loginscherm.html" class="uitloggen-knop">Uitloggen</a>
+    <div class="nieuwwoord-container">
+        <h2>Nieuwe woord</h2>
+        <input type="text" placeholder="Typ woord">
+        <button>Toevoegen</button>
+    </div>
+
+    <footer>
+        <img src="../img/footer.png" alt="footer">
+    </footer>
+    
+    <a href="dashboard.html" class="terug-knop">← Terug</a>
+</body>
+</html>
