@@ -10,8 +10,8 @@ const auth = (req, res, next) => {
   const token = authHeader.split(' ')[1];
 
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'fallbacksecret');
-    req.user = decoded;
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = decoded; // { id, admin }
     next();
   } catch (err) {
     res.status(401).json({ msg: 'Token is not valid' });
