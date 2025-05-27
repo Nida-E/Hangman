@@ -3,9 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scorebord</title>
+    <title>Hangman</title>
     <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
     <style>
+        * {
+        font-family: 'Indie Flower', cursive;
+    }
+
+    button, input {
+        font-family: 'Indie Flower', cursive;
+    }
         html, body {
             height: 100%;
             margin: 0;
@@ -40,7 +47,7 @@
 
         .score-wrapper {
             position: relative;
-            width: 350px; /* kleiner gemaakt */
+            width: 350px;
         }
 
         .score-wrapper img {
@@ -52,7 +59,7 @@
         .score-text {
             position: absolute;
             top: 40px;
-            left: 75px; /* aangepast voor kleinere breedte */
+            left: 75px; 
             color: #000;
             font-size: 1.5em;
         }
@@ -60,7 +67,7 @@
         .score-subtext {
             position: absolute;
             bottom: 70px;
-            left: 75px; /* aangepast voor kleinere breedte */
+            left: 75px; 
             color: #000;
             font-size: 1em;
         }
@@ -84,7 +91,6 @@
             background-color: rgba(255, 255, 255, 1);
         }
 
-        /* ✅ Uitloggen-knop stijl */
         .uitloggen-knop {
             position: fixed;
             top: 30px;
@@ -121,7 +127,6 @@
     </style>
 </head>
 <body>
-    <!-- ✅ Uitloggen-knop -->
     <a href="loginscherm.html" class="uitloggen-knop">Uitloggen</a>
 
     <h2>Raad het woord</h2>
