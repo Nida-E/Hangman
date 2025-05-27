@@ -1,11 +1,187 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+    <style>
+        * {
+        font-family: 'Indie Flower', cursive;
+    }
+
+    button, input {
+        font-family: 'Indie Flower', cursive;
+    }
+
+        html, body {
+            height: 100%;
+            font-family: 'Indie Flower', cursive;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            background: url('../img/background.png') center/cover no-repeat;
+        }
+
+        h2 {
+            color: #D9D9D9;
+            font-size: 2.5em;
+            margin: 2rem;
+            text-align: center;
+        }
+
+        .score-layout {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex: 1;
+            gap: 4rem;
+        }
+
+        .score-info {
+            color: #D9D9D9;
+            font-size: 1.5em;
+            max-width: 250px;
+        }
+
+        .score-wrapper {
+            position: relative;
+            width: 350px;
+        }
+
+        .score-wrapper img {
+            width: 100%;
+            display: block;
+        }
+
+        .score-text, .score-subtext {
+            position: absolute;
+            left: 75px;
+            color: #000;
+        }
+
+        .score-text {
+            top: 40px;
+            font-size: 1.2em;
+        }
+
+        .score-subtext {
+            bottom: 70px;
+            font-size: 1em;
+        }
+
+        .x-button {
+            width: 18px;
+            height: 18px;
+            background-color: #8B5A2B;
+            color: #fcecc3;
+            border-radius: 4px;
+            border: none;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            font-family: Arial, sans-serif;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .x-button:hover {
+            opacity: 0.9;
+        }
+
+        .uitloggen-knop, .terug-knop {
+            position: fixed;
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #333;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 1em;
+            font-family: 'Indie Flower', cursive;
+            transition: background-color 0.3s ease;
+            z-index: 1000;
+            padding: 0.6rem 1.8rem;
+        }
+
+        .uitloggen-knop:hover,
+        .terug-knop:hover {
+            background-color: #fff;
+        }
+
+        .uitloggen-knop {
+            top: 30px;
+            left: 65px;
+        }
+
+        .terug-knop {
+            bottom: 50px;
+            left: 65px;
+            padding: 0.6rem 4.2rem;
+        }
+
+        footer {
+            width: 100%;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        footer img {
+            width: 100%;
+            margin: -20px 0;
+        }
+        #alles {
+            display: block;
+            margin: 1rem auto;
+            padding: 0.5rem 1.5rem;
+            background-color: #8B5A2B;
+            color: #fcecc3;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            font-family: 'Indie Flower', cursive;
+        }
+        #alles :hover {
+            display: block;
+            margin: 1rem auto;
+            padding: 0.5rem 1.5rem;
+            background-color: #603e1f;
+            color: #fcecc3;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            font-family: 'Indie Flower', cursive;
+        }
+    </style>
 </head>
 <body>
-    
+    <a href="loginscherm.html" class="uitloggen-knop">Uitloggen</a>
+
+    <h2>Admin</h2>
+
+    <div class="score-layout">
+        <div class="score-info">
+            <p><strong>Hoogste score:</strong> 2000</p>
+            <p><strong>Vandaag:</strong> 7.000</p>
+            <p><strong>Gisteren:</strong> 10.000</p>
+            <p><strong>Altijd:</strong> 20.000</p>
+        </div>
+
+        <div class="score-wrapper">
+            <img src="../img/scorenote.png" alt="Score Note">
+            <div class="score-text">SCORE:<br>Test: 1243 <button class="x-button">×</button></div>
+            <button id="alles">Verwijder alles</button>
+            <div class="score-subtext">Nu aan het gebruiken: 3</div>
+        </div>
+    </div>
+
+    <footer>
+        <img src="../img/footer.png" alt="footer">
+    </footer>
+
+    <a href="#" class="terug-knop">← Terug</a>
 </body>
 </html>
