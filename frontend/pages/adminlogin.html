@@ -6,6 +6,13 @@
     <title>Admin Login</title>
     <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
     <style>
+        * {
+        font-family: 'Indie Flower', cursive;
+    }
+
+    button, input {
+        font-family: 'Indie Flower', cursive;
+    }
         html, body {
             height: 100%;
             margin: 0;
@@ -31,18 +38,7 @@
             padding: 1rem;
             position: relative;
         }
-        .admin-badge {
-            position: absolute;
-            top: -20px;
-            right: -10px;
-            background-color: #ff6b6b;
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.8em;
-            font-weight: bold;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-        }
+        
         .admin-login-container h2 {
             font-size: 2.5em;
             margin-bottom: 0.5rem;
@@ -71,20 +67,20 @@
         }
         .admin-login-container input:focus {
             outline: none;
-            border-color: #ff6b6b;
+            border-color: #86572B;
             box-shadow: 0 0 10px rgba(255, 107, 107, 0.3);
         }
         .admin-login-container button {
             cursor: pointer;
-            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
             color: white;
             font-weight: bold;
+            background-color: #86572B;
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: all 0.3s ease;
         }
         .admin-login-container button:hover {
-            background: linear-gradient(45deg, #ff5252, #ff7979);
+            background-color: #603e1f;
             transform: translateY(-2px);
             box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
         }
@@ -167,7 +163,6 @@
 </head>
 <body>
     <div class="admin-login-container">
-        <div class="admin-badge">🔐 ADMIN</div>
         <div class="admin-icon">👑</div>
         <h2>Admin Login</h2>
         <div class="admin-subtitle">Beheerderspaneel Toegang</div>
@@ -183,8 +178,6 @@
             <button type="submit" id="adminLoginBtn">🔐 Admin Inloggen</button>
         </form>
         <div id="message"></div>
-        
-        <a href="loginscherm.html">← Terug naar normale login</a>
         
         <div style="margin-top: 2rem; font-size: 0.8em; color: #999;">
             <strong>Test Admin Account:</strong><br>
