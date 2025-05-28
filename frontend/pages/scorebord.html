@@ -6,6 +6,13 @@
     <title>Scorebord</title>
     <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
     <style>
+        * {
+        font-family: 'Indie Flower', cursive;
+    }
+
+    button, input {
+        font-family: 'Indie Flower', cursive;
+    }
         html, body {
             height: 100%;
             margin: 0;
@@ -32,6 +39,16 @@
             align-items: flex-start;
             padding: 2rem;
             flex: 1;
+            padding: 0.1rem;
+            gap: 2rem;
+            position: relative;
+        }
+
+        .score-info {
+            color: #D9D9D9;
+            font-size: 1.5em;
+            font-family: 'Indie Flower', cursive;
+            max-width: 250px;
         }
         .score-wrapper {
             position: relative;
@@ -151,7 +168,15 @@
     
     <h2>🏆 Scorebord</h2>
 
-    <div class="score-container">
+    <div class="score-layout">
+
+        <div class="score-info">
+            <p><strong>Hoogste score:</strong> 2000</p>
+            <p><strong>Vandaag:</strong> 7.000</p>
+            <p><strong>Gisteren:</strong> 10.000</p>
+            <p><strong>Altijd:</strong> 20.000</p>
+        </div>
+
         <div class="score-wrapper">
             <img src="../img/scorenote.png" alt="Score Note">
             <div class="score-text" id="currentScoreDisplay">
