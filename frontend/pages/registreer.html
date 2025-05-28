@@ -11,7 +11,6 @@
             margin: 0;
             padding: 0;
             font-family: 'Indie Flower', cursive;
-    
         }
         body {
             flex: 1;
@@ -24,11 +23,9 @@
             background-repeat: no-repeat;
             background-position: center;
         }
-
         h2 {
             color:#D9D9D9;
         }
-        
         .register-container {
             text-align: center;
             width: 90%;
@@ -36,7 +33,6 @@
             display: block;
             margin-top: 6rem;
             color: #D9D9D9;
-       
         }
         .register-container h2 {
             font-size: 2em;
@@ -55,13 +51,14 @@
         }
         .register-container button {
             cursor: pointer;
-            
         }
         .register-container button:hover {
             background-color: rgba(255, 255, 255, 1);
-            
         }
-
+        .register-container button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
         footer {
             width: 100%;
             text-align: center;
@@ -69,28 +66,13 @@
             flex-direction: column;
             align-items: center;
             padding: 1rem 0;
-            margin-top: auto; /* This will push the footer to the bottom */
+            margin-top: auto;
         }
         footer img {
             width: 100%;
             text-align: center;
             margin: -20px;
-
         }
-        .back-button {
-            margin-top: 1rem;
-            padding: 0.6rem 1.2rem;
-            border: none;
-            border-radius: 25px;
-            background-color: rgba(255, 255, 255, 0.8);
-            font-size: 1em;
-            cursor: pointer;
-        }
-        .back-button:hover {
-            background-color: rgba(255, 255, 255, 1);
-        }
-
-        /* ✅ Terug-knop stijl */
         .terug-knop {
             position: fixed;
             bottom: 50px;
@@ -108,20 +90,88 @@
         .terug-knop:hover {
             background-color: rgba(255, 255, 255, 1);
         }
+        .error-message {
+            color: #ff6b6b;
+            margin: 0.5rem 0;
+            font-size: 0.9em;
+            background-color: rgba(255, 107, 107, 0.1);
+            padding: 0.5rem;
+            border-radius: 15px;
+        }
+        .success-message {
+            color: #51cf66;
+            margin: 0.5rem 0;
+            font-size: 0.9em;
+            background-color: rgba(81, 207, 102, 0.1);
+            padding: 0.5rem;
+            border-radius: 15px;
+        }
     </style>
 </head>
 <body>
     <div class="register-container">
         <h2>Registreer</h2>
-        <input type="email" placeholder="Email">
-        <input type="text" placeholder="Gebruikersnaam">
-        <input type="password" placeholder="Wachtwoord">
-        <button>Registreer</button>
+        <form id="registerForm">
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="text" id="username" placeholder="Gebruikersnaam" required>
+            <input type="password" id="password" placeholder="Wachtwoord" required>
+            <button type="submit" id="registerBtn">Registreer</button>
+        </form>
+        <div id="message"></div>
     </div>
     <footer>
         <img src="../img/footer.png" alt="footer">
     </footer>
-
     <a href="loginscherm.html" class="terug-knop">← Terug</a>
+
+    <script>
+        const API_BASE_URL = 'http://localhost:4000';
+
+        document.getElementById('registerForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const messageDiv = document.getElementById('message');
+            const registerBtn = document.getElementById('registerBtn');
+            
+            registerBtn.disabled = true;
+            registerBtn.textContent = 'Registreer...';
+            messageDiv.innerHTML = '';
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/register`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email: email,
+                        username: username,
+                        password: password
+                    })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    messageDiv.innerHTML = '<div class="success-message">Account succesvol aangemaakt! 🎉 Je wordt doorgestuurd naar login...</div>';
+                    
+                    setTimeout(() => {
+                        window.location.href = 'loginscherm.html';
+                    }, 2000);
+                } else {
+                    messageDiv.innerHTML = `<div class="error-message">${data.msg}</div>`;
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                messageDiv.innerHTML = '<div class="error-message">🚫 Kan niet verbinden met server. Zorg dat backend draait op poort 4000.</div>';
+            } finally {
+                registerBtn.disabled = false;
+                registerBtn.textContent = 'Registreer';
+            }
+        });
+    </script>
 </body>
 </html>

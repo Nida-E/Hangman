@@ -51,6 +51,10 @@
         .login-container button:hover {
             background-color: rgba(255, 255, 255, 1);
         }
+        .login-container button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
         .login-container a {
             display: block;
             margin-top: 1rem;
@@ -70,21 +74,96 @@
             height: auto;
             margin: 0;
         }
-
-        
+        .error-message {
+            color: #ff6b6b;
+            margin: 0.5rem 0;
+            font-size: 0.9em;
+            background-color: rgba(255, 107, 107, 0.1);
+            padding: 0.5rem;
+            border-radius: 15px;
+        }
+        .success-message {
+            color: #51cf66;
+            margin: 0.5rem 0;
+            font-size: 0.9em;
+            background-color: rgba(81, 207, 102, 0.1);
+            padding: 0.5rem;
+            border-radius: 15px;
+        }
     </style>
 </head>
 <body>
     <div class="login-container">
         <h2>Log in</h2>
-        <input type="text" placeholder="Gebruikersnaam">
-        <input type="password" placeholder="Wachtwoord">
-        <button>Inloggen</button>
+        <form id="loginForm">
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Wachtwoord" required>
+            <button type="submit" id="loginBtn">Inloggen</button>
+        </form>
+        <div id="message"></div>
         <a href="registreer.html">Nog geen account? Registreer hier</a>
     </div>
-
     <footer>
         <img src="../img/footer.png" alt="footer">
     </footer>
+
+    <script>
+        const API_BASE_URL = 'http://localhost:4000';
+
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const messageDiv = document.getElementById('message');
+            const loginBtn = document.getElementById('loginBtn');
+            
+            loginBtn.disabled = true;
+            loginBtn.textContent = 'Inloggen...';
+            messageDiv.innerHTML = '';
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/login`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email: email,
+                        password: password
+                    })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    messageDiv.innerHTML = '<div class="success-message">Login succesvol! 🎉</div>';
+                    
+                    localStorage.setItem('token', data.token);
+                    localStorage.setItem('user', JSON.stringify(data.user));
+                    
+                    setTimeout(() => {
+                        window.location.href = 'dashboard.html';
+                    }, 1500);
+                } else {
+                    messageDiv.innerHTML = `<div class="error-message">${data.msg}</div>`;
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                messageDiv.innerHTML = '<div class="error-message">🚫 Kan niet verbinden met server. Zorg dat backend draait op poort 4000.</div>';
+            } finally {
+                loginBtn.disabled = false;
+                loginBtn.textContent = 'Inloggen';
+            }
+        });
+
+        // Check if already logged in
+        window.addEventListener('load', function() {
+            const token = localStorage.getItem('token');
+            if (token) {
+                window.location.href = 'dashboard.html';
+            }
+        });
+    </script>
 </body>
 </html>

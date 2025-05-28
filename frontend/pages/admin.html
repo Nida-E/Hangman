@@ -1,11 +1,409 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin</title>
+    <title>Admin Panel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: 'Indie Flower', cursive;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            background-image: url('../img/background.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        h1 {
+            color: #D9D9D9;
+            text-align: center;
+            margin: 2rem 0;
+            font-size: 3em;
+        }
+        .admin-container {
+            background-color: rgba(255, 255, 255, 0.95);
+            margin: 2rem auto;
+            padding: 2rem;
+            border-radius: 15px;
+            max-width: 800px;
+            width: 90%;
+        }
+        .admin-section {
+            margin: 2rem 0;
+            padding: 1rem;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+        }
+        .admin-section h2 {
+            color: #333;
+            margin-top: 0;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .stat-card {
+            background-color: #f0f0f0;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+        .stat-label {
+            font-size: 1.1em;
+            color: #666;
+        }
+        .user-list {
+            max-height: 300px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 1rem;
+        }
+        .user-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .user-item:last-child {
+            border-bottom: none;
+        }
+        .word-list {
+            max-height: 200px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 1rem;
+        }
+        .word-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.3rem;
+            border-bottom: 1px solid #eee;
+        }
+        .btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Indie Flower', cursive;
+            font-size: 1em;
+            margin: 0.2rem;
+        }
+        .btn-danger {
+            background-color: #ff4444;
+            color: white;
+        }
+        .btn-primary {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .btn-secondary {
+            background-color: #666;
+            color: white;
+        }
+        .btn:hover {
+            opacity: 0.8;
+        }
+        .terug-knop, .uitloggen-knop {
+            position: fixed;
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #333;
+            padding: 0.6rem 2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 1em;
+            font-family: 'Indie Flower', cursive;
+            transition: background-color 0.3s ease;
+            z-index: 1000;
+            cursor: pointer;
+        }
+        .terug-knop {
+            bottom: 50px;
+            left: 65px;
+        }
+        .uitloggen-knop {
+            top: 30px;
+            left: 30px;
+        }
+        .terug-knop:hover, .uitloggen-knop:hover {
+            background-color: rgba(255, 255, 255, 1);
+        }
+        .access-denied {
+            text-align: center;
+            color: #ff4444;
+            font-size: 2em;
+            margin: 4rem 0;
+        }
+        footer {
+            width: 100%;
+            text-align: center;
+            margin-top: auto;
+        }
+        footer img {
+            width: 100%;
+            margin: -20px;
+        }
+    </style>
 </head>
 <body>
+    <a onclick="logout()" class="uitloggen-knop">Uitloggen</a>
     
+    <h1>🔧 Admin Panel</h1>
+    
+    <div id="adminContent" class="admin-container" style="display: none;">
+        <!-- Statistics Section -->
+        <div class="admin-section">
+            <h2>📊 Systeem Statistieken</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number" id="totalUsers">0</div>
+                    <div class="stat-label">Totaal Gebruikers</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="totalWords">0</div>
+                    <div class="stat-label">Totaal Woorden</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="activeUsers">0</div>
+                    <div class="stat-label">Actieve Gebruikers</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="totalGamesPlayed">0</div>
+                    <div class="stat-label">Games Gespeeld</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- User Management Section -->
+        <div class="admin-section">
+            <h2>👥 Gebruikers Beheer</h2>
+            <div class="user-list" id="userList">
+                <div>Gebruikers worden geladen...</div>
+            </div>
+            <button class="btn btn-primary" onclick="refreshUsers()">🔄 Ververs Gebruikers</button>
+        </div>
+
+        <!-- Word Management Section -->
+        <div class="admin-section">
+            <h2>📝 Woorden Beheer</h2>
+            <div class="word-list" id="wordList">
+                <div>Woorden worden geladen...</div>
+            </div>
+            <button class="btn btn-primary" onclick="refreshWords()">🔄 Ververs Woorden</button>
+            <button class="btn btn-danger" onclick="clearAllWords()">🗑️ Alle Woorden Verwijderen</button>
+        </div>
+
+        <!-- System Actions Section -->
+        <div class="admin-section">
+            <h2>⚙️ Systeem Acties</h2>
+            <button class="btn btn-secondary" onclick="exportSystemData()">📊 Systeem Data Exporteren</button>
+            <button class="btn btn-secondary" onclick="viewServerLogs()">📋 Server Logs Bekijken</button>
+            <button class="btn btn-danger" onclick="resetAllStats()">🗑️ Alle Statistieken Resetten</button>
+        </div>
+    </div>
+
+    <div id="accessDenied" class="access-denied" style="display: none;">
+        🚫 Access Denied<br>
+        <div style="font-size: 0.6em; margin-top: 1rem;">
+            Je hebt geen admin rechten voor deze pagina.
+        </div>
+        <button class="btn btn-primary" style="margin-top: 2rem;" onclick="window.location.href='dashboard.html'">
+            Terug naar Dashboard
+        </button>
+    </div>
+
+    <footer>
+        <img src="../img/footer.png" alt="footer">
+    </footer>
+
+    <a href="dashboard.html" class="terug-knop">← Dashboard</a>
+
+    <script>
+        const API_BASE_URL = 'http://localhost:4000';
+
+        // Check authentication and admin rights
+        function checkAuth() {
+            const token = localStorage.getItem('token');
+            const user = JSON.parse(localStorage.getItem('user') || '{}');
+            
+            if (!token) {
+                window.location.href = 'loginscherm.html';
+                return false;
+            }
+            
+            // For demo purposes, allow admin access
+            // In real app, you'd check user.admin from backend
+            return token;
+        }
+
+        // Logout function
+        function logout() {
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+            window.location.href = 'loginscherm.html';
+        }
+
+        // Mock function to check if user is admin
+        function isAdmin() {
+            // For demo: if username contains 'admin', grant access
+            const user = JSON.parse(localStorage.getItem('user') || '{}');
+            return user.username && user.username.toLowerCase().includes('admin');
+        }
+
+        // Load system statistics
+        async function loadStats() {
+            try {
+                // Get words count
+                const wordsResponse = await fetch(`${API_BASE_URL}/`);
+                const words = await wordsResponse.json();
+                
+                document.getElementById('totalWords').textContent = words.length;
+                
+                // Mock other statistics for demo
+                document.getElementById('totalUsers').textContent = '2'; // From your MongoDB data
+                document.getElementById('activeUsers').textContent = '1';
+                document.getElementById('totalGamesPlayed').textContent = localStorage.getItem('totalGames') || '0';
+                
+            } catch (error) {
+                console.error('Error loading stats:', error);
+            }
+        }
+
+        // Refresh users list
+        async function refreshUsers() {
+            const userList = document.getElementById('userList');
+            userList.innerHTML = `
+                <div class="user-item">
+                    <div>
+                        <strong>test</strong> (test@test.com)<br>
+                        <small>Score: 0 | Aangemaakt: ${new Date().toLocaleDateString('nl-NL')}</small>
+                    </div>
+                    <div>
+                        <button class="btn btn-danger" onclick="alert('User delete functionality zou hier komen')">Verwijder</button>
+                    </div>
+                </div>
+                <div class="user-item">
+                    <div>
+                        <strong>Abdul</strong> (Abdul@test.com)<br>
+                        <small>Score: 0 | Aangemaakt: ${new Date().toLocaleDateString('nl-NL')}</small>
+                    </div>
+                    <div>
+                        <button class="btn btn-danger" onclick="alert('User delete functionality zou hier komen')">Verwijder</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Refresh words list
+        async function refreshWords() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/`);
+                const words = await response.json();
+                
+                const wordList = document.getElementById('wordList');
+                if (words.length === 0) {
+                    wordList.innerHTML = '<div>Geen woorden gevonden</div>';
+                } else {
+                    wordList.innerHTML = words.map(word => `
+                        <div class="word-item">
+                            <div>
+                                <strong>${word.word}</strong>
+                                <small>(${word.public ? 'Publiek' : 'Privé'} - ${new Date(word.createdAt).toLocaleDateString('nl-NL')})</small>
+                            </div>
+                            <button class="btn btn-danger" onclick="deleteWord('${word._id}')">Verwijder</button>
+                        </div>
+                    `).join('');
+                }
+            } catch (error) {
+                console.error('Error refreshing words:', error);
+                document.getElementById('wordList').innerHTML = '<div>Error bij laden van woorden</div>';
+            }
+        }
+
+        // Delete word function (mock - would need backend endpoint)
+        function deleteWord(wordId) {
+            if (confirm('Weet je zeker dat je dit woord wilt verwijderen?')) {
+                alert('Word delete functionality zou hier komen (DELETE /words/' + wordId + ')');
+                refreshWords();
+            }
+        }
+
+        // Clear all words
+        function clearAllWords() {
+            if (confirm('⚠️ WAARSCHUWING: Dit verwijdert ALLE woorden uit het systeem! Weet je het zeker?')) {
+                alert('Clear all words functionality zou hier komen');
+                refreshWords();
+            }
+        }
+
+        // Export system data
+        function exportSystemData() {
+            const systemData = {
+                exportDate: new Date().toISOString(),
+                stats: {
+                    totalUsers: document.getElementById('totalUsers').textContent,
+                    totalWords: document.getElementById('totalWords').textContent,
+                    activeUsers: document.getElementById('activeUsers').textContent,
+                    totalGamesPlayed: document.getElementById('totalGamesPlayed').textContent
+                },
+                exportedBy: JSON.parse(localStorage.getItem('user') || '{}').username
+            };
+            
+            const dataStr = JSON.stringify(systemData, null, 2);
+            const dataBlob = new Blob([dataStr], {type: 'application/json'});
+            
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(dataBlob);
+            link.download = `hangman_system_export_${new Date().toISOString().split('T')[0]}.json`;
+            link.click();
+            
+            alert('📊 Systeem data geëxporteerd!');
+        }
+
+        // View server logs (mock)
+        function viewServerLogs() {
+            alert('📋 Server logs functionaliteit zou hier komen.\n\nDit zou de laatste server logs tonen voor debugging doeleinden.');
+        }
+
+        // Reset all statistics
+        function resetAllStats() {
+            if (confirm('⚠️ KRITIEKE ACTIE: Dit reset alle gebruiker statistieken! Weet je het ZEKER?')) {
+                if (confirm('Laatste bevestiging: Alle game statistieken worden permanent verwijderd!')) {
+                    // In real app, this would call a backend endpoint
+                    alert('🗑️ Alle statistieken zouden nu gereset worden (backend endpoint nodig)');
+                }
+            }
+        }
+
+        // Initialize admin panel
+        window.addEventListener('load', function() {
+            if (checkAuth()) {
+                if (isAdmin()) {
+                    document.getElementById('adminContent').style.display = 'block';
+                    loadStats();
+                    refreshUsers();
+                    refreshWords();
+                } else {
+                    document.getElementById('accessDenied').style.display = 'block';
+                }
+            }
+        });
+    </script>
 </body>
 </html>

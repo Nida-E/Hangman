@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scorebord</title>
+    <title>Hangman Game</title>
     <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
     <style>
         html, body {
@@ -12,7 +12,6 @@
             padding: 0;
             font-family: 'Indie Flower', cursive;
         }
-
         body {
             display: flex;
             flex-direction: column;
@@ -21,118 +20,350 @@
             background-repeat: no-repeat;
             background-position: center;
         }
-
         h2 {
             color: #D9D9D9;
             font-size: 2.5em;
-            margin: 2rem 0 1rem 2rem;
+            margin: 1rem 0;
             text-align: center;
         }
-
-        .score-container {
-            position: relative;
-            display: flex;
-            justify-content: flex-end;
-            align-items: flex-start;
-            padding: 2rem;
-            flex: 1;
-        }
-
-        .score-wrapper {
-            position: relative;
-            width: 350px; /* kleiner gemaakt */
-        }
-
-        .score-wrapper img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .score-text {
-            position: absolute;
-            top: 40px;
-            left: 75px; /* aangepast voor kleinere breedte */
-            color: #000;
-            font-size: 1.5em;
-        }
-
-        .score-subtext {
-            position: absolute;
-            bottom: 70px;
-            left: 75px; /* aangepast voor kleinere breedte */
-            color: #000;
-            font-size: 1em;
-        }
-
-        .terug-knop {
-            position: fixed;
-            bottom: 50px;
-            left: 65px;
-            background-color: rgba(255, 255, 255, 0.8);
-            color: #333;
-            padding: 0.6rem 4.2rem;
-            border-radius: 25px;
-            text-decoration: none;
-            font-size: 1em;
-            font-family: 'Indie Flower', cursive;
-            transition: background-color 0.3s ease;
-            z-index: 1000;
-        }
-
-        .terug-knop:hover {
-            background-color: rgba(255, 255, 255, 1);
-        }
-
-        /* ✅ Uitloggen-knop stijl */
-        .uitloggen-knop {
-            position: fixed;
-            top: 30px;
-            left: 30px;
-            background-color: rgba(255, 255, 255, 0.8);
-            color: #333;
-            padding: 0.4rem 1.8rem;
-            border-radius: 25px;
-            text-decoration: none;
-            font-size: 1em;
-            font-family: 'Indie Flower', cursive;
-            transition: background-color 0.3s ease;
-            z-index: 1000;
-        }
-
-        .uitloggen-knop:hover {
-            background-color: rgba(255, 255, 255, 1);
-        }
-
-        footer {
-            width: 100%;
-            text-align: center;
+        .game-container {
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 1rem 0;
+            padding: 2rem;
+            flex: 1;
+        }
+        .hangman-display {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 1rem;
+            font-family: monospace;
+            font-size: 1.2em;
+            white-space: pre-line;
+            min-height: 200px;
+            min-width: 200px;
+            text-align: center;
+        }
+        .word-display {
+            font-size: 3em;
+            letter-spacing: 0.5em;
+            color: #D9D9D9;
+            margin: 1rem 0;
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 1rem;
+            border-radius: 15px;
+        }
+        .alphabet {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 0.5rem;
+            margin: 1rem 0;
+            max-width: 400px;
+        }
+        .letter-btn {
+            padding: 0.8rem;
+            border: none;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+            font-size: 1.2em;
+            cursor: pointer;
+            font-family: 'Indie Flower', cursive;
+        }
+        .letter-btn:hover {
+            background-color: rgba(255, 255, 255, 1);
+        }
+        .letter-btn:disabled {
+            background-color: rgba(255, 0, 0, 0.3);
+            cursor: not-allowed;
+        }
+        .letter-btn.correct {
+            background-color: rgba(0, 255, 0, 0.3);
+        }
+        .game-info {
+            display: flex;
+            gap: 2rem;
+            color: #D9D9D9;
+            font-size: 1.5em;
+            margin: 1rem 0;
+        }
+        .new-game-btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 25px;
+            background-color: rgba(255, 255, 255, 0.8);
+            font-size: 1.2em;
+            cursor: pointer;
+            font-family: 'Indie Flower', cursive;
+            margin: 1rem;
+        }
+        .new-game-btn:hover {
+            background-color: rgba(255, 255, 255, 1);
+        }
+        .terug-knop, .uitloggen-knop {
+            position: fixed;
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #333;
+            padding: 0.6rem 2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 1em;
+            font-family: 'Indie Flower', cursive;
+            transition: background-color 0.3s ease;
+            z-index: 1000;
+            cursor: pointer;
+        }
+        .terug-knop {
+            bottom: 50px;
+            left: 65px;
+        }
+        .uitloggen-knop {
+            top: 30px;
+            left: 30px;
+        }
+        .terug-knop:hover, .uitloggen-knop:hover {
+            background-color: rgba(255, 255, 255, 1);
+        }
+        footer {
+            width: 100%;
+            text-align: center;
             margin-top: auto;
         }
-
         footer img {
             width: 100%;
             margin: -20px;
         }
+        .game-over {
+            background-color: rgba(255, 255, 255, 0.9);
+            color: #333;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            font-size: 1.5em;
+            margin: 1rem;
+        }
     </style>
 </head>
 <body>
-    <!-- ✅ Uitloggen-knop -->
-    <a href="loginscherm.html" class="uitloggen-knop">Uitloggen</a>
-
-    <h2>Raad het woord</h2>
-    <h2>Punten: 0</h2>
-
+    <a onclick="logout()" class="uitloggen-knop">Uitloggen</a>
     
+    <h2>🎮 Hangman Game</h2>
+    
+    <div class="game-container">
+        <div class="game-info">
+            <div>Punten: <span id="score">0</span></div>
+            <div>Fouten: <span id="wrongGuesses">0</span>/6</div>
+        </div>
+        
+        <div class="hangman-display" id="hangmanDisplay"></div>
+        
+        <div class="word-display" id="wordDisplay">_ _ _ _</div>
+        
+        <div class="alphabet" id="alphabet"></div>
+        
+        <div id="gameMessage" class="game-over" style="display: none;"></div>
+        
+        <button class="new-game-btn" onclick="startNewGame()">🎲 Nieuw Spel</button>
+    </div>
 
     <footer>
         <img src="../img/footer.png" alt="footer">
     </footer>
 
-    <a href="dashboard.html" class="terug-knop">← Terug</a>
+    <a href="dashboard.html" class="terug-knop">← Dashboard</a>
+
+    <script>
+        const API_BASE_URL = 'http://localhost:4000';
+        
+        let currentWord = '';
+        let guessedLetters = [];
+        let wrongGuesses = 0;
+        let score = parseInt(localStorage.getItem('hangmanScore') || '0');
+        let gameOver = false;
+        let availableWords = [];
+
+        const hangmanStages = [
+            '', // 0 errors
+            '  +---+\n      |\n      |\n      |\n      |\n      |\n=========',
+            '  +---+\n  |   |\n      |\n      |\n      |\n      |\n=========',
+            '  +---+\n  |   |\n  O   |\n      |\n      |\n      |\n=========',
+            '  +---+\n  |   |\n  O   |\n  |   |\n      |\n      |\n=========',
+            '  +---+\n  |   |\n  O   |\n /|   |\n      |\n      |\n=========',
+            '  +---+\n  |   |\n  O   |\n /|\\  |\n      |\n      |\n=========',
+            '  +---+\n  |   |\n  O   |\n /|\\  |\n /    |\n      |\n=========',
+            '  +---+\n  |   |\n  O   |\n /|\\  |\n / \\  |\n      |\n========='
+        ];
+
+        // Check authentication
+        function checkAuth() {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                window.location.href = 'loginscherm.html';
+                return false;
+            }
+            return token;
+        }
+
+        // Logout function
+        function logout() {
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+            window.location.href = 'loginscherm.html';
+        }
+
+        // Load words from backend
+        async function loadWords() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/`);
+                availableWords = await response.json();
+                if (availableWords.length === 0) {
+                    alert('Geen woorden beschikbaar! Voeg eerst woorden toe in het dashboard.');
+                    window.location.href = 'dashboard.html';
+                }
+            } catch (error) {
+                console.error('Error loading words:', error);
+                alert('Kan woorden niet laden. Zorg dat de server draait.');
+            }
+        }
+
+        // Create alphabet buttons
+        function createAlphabet() {
+            const alphabetDiv = document.getElementById('alphabet');
+            const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            alphabetDiv.innerHTML = '';
+            
+            for (let letter of letters) {
+                const btn = document.createElement('button');
+                btn.className = 'letter-btn';
+                btn.textContent = letter;
+                btn.onclick = () => guessLetter(letter);
+                alphabetDiv.appendChild(btn);
+            }
+        }
+
+        // Start new game
+        async function startNewGame() {
+            if (availableWords.length === 0) {
+                await loadWords();
+            }
+            
+            // Pick random word
+            const randomWord = availableWords[Math.floor(Math.random() * availableWords.length)];
+            currentWord = randomWord.word.toUpperCase();
+            
+            // Reset game state
+            guessedLetters = [];
+            wrongGuesses = 0;
+            gameOver = false;
+            
+            // Update display
+            updateWordDisplay();
+            updateHangmanDisplay();
+            updateScore();
+            createAlphabet();
+            
+            // Hide game message
+            document.getElementById('gameMessage').style.display = 'none';
+        }
+
+        // Guess a letter
+        function guessLetter(letter) {
+            if (gameOver || guessedLetters.includes(letter)) return;
+            
+            guessedLetters.push(letter);
+            
+            // Find the button and disable it
+            const buttons = document.querySelectorAll('.letter-btn');
+            buttons.forEach(btn => {
+                if (btn.textContent === letter) {
+                    btn.disabled = true;
+                    if (currentWord.includes(letter)) {
+                        btn.classList.add('correct');
+                    }
+                }
+            });
+            
+            if (currentWord.includes(letter)) {
+                updateWordDisplay();
+                if (isWordComplete()) {
+                    endGame(true);
+                }
+            } else {
+                wrongGuesses++;
+                updateHangmanDisplay();
+                if (wrongGuesses >= 6) {
+                    endGame(false);
+                }
+            }
+        }
+
+        // Update word display
+        function updateWordDisplay() {
+            let display = '';
+            for (let letter of currentWord) {
+                if (guessedLetters.includes(letter)) {
+                    display += letter + ' ';
+                } else {
+                    display += '_ ';
+                }
+            }
+            document.getElementById('wordDisplay').textContent = display;
+        }
+
+        // Update hangman display
+        function updateHangmanDisplay() {
+            document.getElementById('hangmanDisplay').textContent = hangmanStages[wrongGuesses];
+        }
+
+        // Update score display
+        function updateScore() {
+            document.getElementById('score').textContent = score;
+            document.getElementById('wrongGuesses').textContent = wrongGuesses;
+        }
+
+        // Check if word is complete
+        function isWordComplete() {
+            return currentWord.split('').every(letter => guessedLetters.includes(letter));
+        }
+
+        // End game
+        function endGame(won) {
+            gameOver = true;
+            const messageDiv = document.getElementById('gameMessage');
+            
+            if (won) {
+                const points = Math.max(10 - wrongGuesses, 1) * currentWord.length;
+                score += points;
+                localStorage.setItem('hangmanScore', score.toString());
+                messageDiv.innerHTML = `
+                    <div style='color: green;'>
+                        🎉 GEFELICITEERD! 🎉<br>
+                        Je hebt "${currentWord}" geraden!<br>
+                        +${points} punten!
+                    </div>
+                `;
+            } else {
+                messageDiv.innerHTML = `
+                    <div style='color: red;'>
+                        💀 GAME OVER 💀<br>
+                        Het woord was: "${currentWord}"<br>
+                        Probeer opnieuw!
+                    </div>
+                `;
+            }
+            
+            messageDiv.style.display = 'block';
+            updateScore();
+        }
+
+        // Initialize game
+        window.addEventListener('load', async function() {
+            if (checkAuth()) {
+                updateScore();
+                await loadWords();
+                startNewGame();
+            }
+        });
+    </script>
 </body>
 </html>

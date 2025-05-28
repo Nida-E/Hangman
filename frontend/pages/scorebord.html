@@ -12,7 +12,6 @@
             padding: 0;
             font-family: 'Indie Flower', cursive;
         }
-
         body {
             display: flex;
             flex-direction: column;
@@ -21,183 +20,311 @@
             background-repeat: no-repeat;
             background-position: center;
         }
-
         h2 {
             color: #D9D9D9;
             font-size: 2.5em;
             margin: 2rem 0 1rem 2rem;
             text-align: center;
         }
-
         .score-container {
-            position: relative;
             display: flex;
-            justify-content: flex-end;
+            justify-content: space-around;
             align-items: flex-start;
             padding: 2rem;
             flex: 1;
         }
-
         .score-wrapper {
             position: relative;
-            width: 350px; /* kleiner gemaakt */
+            width: 350px;
         }
-
         .score-wrapper img {
             width: 100%;
             height: auto;
             display: block;
         }
-
         .score-text {
             position: absolute;
             top: 40px;
-            left: 75px; /* aangepast voor kleinere breedte */
+            left: 75px;
             color: #000;
             font-size: 1.5em;
+            line-height: 1.2;
         }
-
         .score-subtext {
             position: absolute;
             bottom: 70px;
-            left: 75px; /* aangepast voor kleinere breedte */
+            left: 75px;
             color: #000;
             font-size: 1em;
         }
-
-        .terug-knop {
+        .terug-knop, .uitloggen-knop {
             position: fixed;
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #333;
+            padding: 0.6rem 2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 1em;
+            font-family: 'Indie Flower', cursive;
+            transition: background-color 0.3s ease;
+            z-index: 1000;
+            cursor: pointer;
+        }
+        .terug-knop {
             bottom: 50px;
             left: 65px;
-            background-color: rgba(255, 255, 255, 0.8);
-            color: #333;
-            padding: 0.6rem 4.2rem;
-            border-radius: 25px;
-            text-decoration: none;
-            font-size: 1em;
-            font-family: 'Indie Flower', cursive;
-            transition: background-color 0.3s ease;
-            z-index: 1000;
         }
-
-        .terug-knop:hover {
-            background-color: rgba(255, 255, 255, 1);
-        }
-
-        /*  Uitloggen-knop stijl */
         .uitloggen-knop {
-            position: fixed;
             top: 30px;
             left: 65px;
-            background-color: rgba(255, 255, 255, 0.8);
-            color: #333;
-            padding: 0.4rem 1.8rem;
-            border-radius: 25px;
-            text-decoration: none;
-            font-size: 1em;
-            font-family: 'Indie Flower', cursive;
-            transition: background-color 0.3s ease;
-            z-index: 1000;
         }
-
-        .uitloggen-knop:hover {
+        .terug-knop:hover, .uitloggen-knop:hover {
             background-color: rgba(255, 255, 255, 1);
         }
-
         footer {
             width: 100%;
             text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 1rem 0;
             margin-top: auto;
         }
-
         footer img {
             width: 100%;
             margin: -20px;
         }
-
         .score-info {
-            position: absolute;
-            top: 50%;
-            left: 500px;
-            transform: translateY(-50%);
-            padding: 1rem 1.5rem;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
             border-radius: 15px;
-            font-size: 1.5em;
-            color: #D9D9D9;
-            font-family: 'Indie Flower', cursive;
-            z-index: 100;
+            font-size: 1.3em;
+            color: #333;
+            min-width: 300px;
         }
-
         .score-buttons {
-            position: absolute;
-            top: calc(50% + 120px); /* onder de score-info */
-            left: 0px;
             display: flex;
             flex-direction: column;
             gap: 1rem;
-            z-index: 100;
-
-    
-    
+            margin-top: 2rem;
         }
-
-.score-button {
-    background-color: rgba(255, 255, 255, 0.85);
-    color: #333;
-    padding: 0.6rem 1.5rem;
-    border-radius: 25px;
-    text-decoration: none;
-    font-size: 1em;
-    font-family: 'Indie Flower', cursive;
-    text-align: center;
-    width: max-content;
-    transition: background-color 0.3s ease;
-}
-
-.score-button:hover {
-    background-color: white;
-}
-
-
+        .score-button {
+            background-color: rgba(255, 255, 255, 0.85);
+            color: #333;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 1em;
+            font-family: 'Indie Flower', cursive;
+            text-align: center;
+            transition: background-color 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        .score-button:hover {
+            background-color: white;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .stat-item {
+            background-color: rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .stat-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+        .reset-btn {
+            background-color: rgba(255, 0, 0, 0.7);
+            color: white;
+        }
+        .reset-btn:hover {
+            background-color: rgba(255, 0, 0, 0.9);
+        }
     </style>
 </head>
 <body>
-    <!--Uitloggen-knop-->
-    <a href="loginscherm.html" class="uitloggen-knop">Uitloggen</a>
-
-    <h2>Scorebord</h2>
+    <a onclick="logout()" class="uitloggen-knop">Uitloggen</a>
+    
+    <h2>🏆 Scorebord</h2>
 
     <div class="score-container">
         <div class="score-wrapper">
             <img src="../img/scorenote.png" alt="Score Note">
-            <div class="score-text">SCORE:<br><br><br><br><br><br><br><br><br>Test: 1243</div>
-            <div class="score-subtext">Nu aan het gebruiken: 3</div>
-        </div>
-    </div>
-
-    <div class="score-info">
-        <p><strong>Hoogste score:</strong> 2000</p>
-        <p><strong>Vandaag:</strong> 7.000</p>
-        <p><strong>Gisteren:</strong> 10.000</p>
-        <p><strong>Altijd:</strong> 20.000</p>
-        <br>
-
-        <div class="score-buttons">
-            <a href="#" class="score-button">Nieuw spel - Woord toevoegen</a>
-            <a href="#" class="score-button">Nieuw spel starten</a>
+            <div class="score-text" id="currentScoreDisplay">
+                SCORE:<br><br>
+                <span id="currentScore">0</span>
+            </div>
+            <div class="score-subtext" id="userInfo">Speler: -</div>
         </div>
         
+        <div class="score-info">
+            <h3>📊 Jouw Statistieken</h3>
+            
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-value" id="totalGames">0</div>
+                    <div>Gespeelde Games</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="gamesWon">0</div>
+                    <div>Gewonnen Games</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="winPercentage">0%</div>
+                    <div>Win Percentage</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="highScore">0</div>
+                    <div>Hoogste Score</div>
+                </div>
+            </div>
+            
+            <div style="margin: 2rem 0;">
+                <strong>🎯 Huidige Score:</strong> <span id="currentScoreText">0</span><br>
+                <strong>🔥 Streak:</strong> <span id="currentStreak">0</span> gewonnen op rij<br>
+                <strong>⭐ Niveau:</strong> <span id="playerLevel">Beginner</span>
+            </div>
+
+            <div class="score-buttons">
+                <a href="gamescherm.html" class="score-button">🎮 Nieuw Spel Starten</a>
+                <a href="dashboard.html" class="score-button">📝 Woord Toevoegen</a>
+                <button class="score-button" onclick="exportStats()">📊 Statistieken Exporteren</button>
+                <button class="score-button reset-btn" onclick="resetStats()">🗑️ Reset Statistieken</button>
+            </div>
+        </div>
     </div>
-    
 
     <footer>
         <img src="../img/footer.png" alt="footer">
     </footer>
 
-    <a href="#" class="terug-knop">← Terug</a>
+    <a href="dashboard.html" class="terug-knop">← Dashboard</a>
+
+    <script>
+        // Check authentication
+        function checkAuth() {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                window.location.href = 'loginscherm.html';
+                return false;
+            }
+            return token;
+        }
+
+        // Logout function
+        function logout() {
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+            window.location.href = 'loginscherm.html';
+        }
+
+        // Get stats from localStorage
+        function getStats() {
+            return {
+                currentScore: parseInt(localStorage.getItem('hangmanScore') || '0'),
+                totalGames: parseInt(localStorage.getItem('totalGames') || '0'),
+                gamesWon: parseInt(localStorage.getItem('gamesWon') || '0'),
+                highScore: parseInt(localStorage.getItem('highScore') || '0'),
+                currentStreak: parseInt(localStorage.getItem('currentStreak') || '0'),
+                lastPlayDate: localStorage.getItem('lastPlayDate') || 'Nooit'
+            };
+        }
+
+        // Update stats display
+        function updateStatsDisplay() {
+            const stats = getStats();
+            const user = JSON.parse(localStorage.getItem('user') || '{}');
+            
+            // Update current score display
+            document.getElementById('currentScore').textContent = stats.currentScore;
+            document.getElementById('currentScoreText').textContent = stats.currentScore;
+            document.getElementById('userInfo').textContent = `Speler: ${user.username || 'Onbekend'}`;
+            
+            // Update statistics
+            document.getElementById('totalGames').textContent = stats.totalGames;
+            document.getElementById('gamesWon').textContent = stats.gamesWon;
+            document.getElementById('highScore').textContent = stats.highScore;
+            document.getElementById('currentStreak').textContent = stats.currentStreak;
+            
+            // Calculate win percentage
+            const winPercentage = stats.totalGames > 0 
+                ? Math.round((stats.gamesWon / stats.totalGames) * 100) 
+                : 0;
+            document.getElementById('winPercentage').textContent = winPercentage + '%';
+            
+            // Determine player level
+            let level = 'Beginner';
+            if (stats.currentScore >= 1000) level = 'Expert';
+            else if (stats.currentScore >= 500) level = 'Gevorderd';
+            else if (stats.currentScore >= 100) level = 'Intermediate';
+            
+            document.getElementById('playerLevel').textContent = level;
+        }
+
+        // Export statistics
+        function exportStats() {
+            const stats = getStats();
+            const user = JSON.parse(localStorage.getItem('user') || '{}');
+            
+            const exportData = {
+                speler: user.username || 'Onbekend',
+                huidigeScore: stats.currentScore,
+                totaalGames: stats.totalGames,
+                gewonnenGames: stats.gamesWon,
+                winPercentage: stats.totalGames > 0 ? Math.round((stats.gamesWon / stats.totalGames) * 100) : 0,
+                hoogsteScore: stats.highScore,
+                huidigeStreak: stats.currentStreak,
+                laatstGespeeld: stats.lastPlayDate,
+                exportDatum: new Date().toLocaleDateString('nl-NL')
+            };
+            
+            const dataStr = JSON.stringify(exportData, null, 2);
+            const dataBlob = new Blob([dataStr], {type: 'application/json'});
+            
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(dataBlob);
+            link.download = `hangman_stats_${user.username || 'user'}_${new Date().toISOString().split('T')[0]}.json`;
+            link.click();
+            
+            alert('📊 Statistieken geëxporteerd!');
+        }
+
+        // Reset statistics
+        function resetStats() {
+            if (confirm('⚠️ Weet je zeker dat je alle statistieken wilt resetten? Dit kan niet ongedaan worden gemaakt!')) {
+                localStorage.removeItem('hangmanScore');
+                localStorage.removeItem('totalGames');
+                localStorage.removeItem('gamesWon');
+                localStorage.removeItem('highScore');
+                localStorage.removeItem('currentStreak');
+                localStorage.removeItem('lastPlayDate');
+                
+                updateStatsDisplay();
+                alert('🗑️ Alle statistieken zijn gereset!');
+            }
+        }
+
+        // Update high score if needed
+        function updateHighScore() {
+            const currentScore = parseInt(localStorage.getItem('hangmanScore') || '0');
+            const highScore = parseInt(localStorage.getItem('highScore') || '0');
+            
+            if (currentScore > highScore) {
+                localStorage.setItem('highScore', currentScore.toString());
+            }
+        }
+
+        // Initialize page
+        window.addEventListener('load', function() {
+            if (checkAuth()) {
+                updateHighScore();
+                updateStatsDisplay();
+            }
+        });
+    </script>
 </body>
 </html>
