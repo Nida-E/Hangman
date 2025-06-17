@@ -1,0 +1,273 @@
+[{
+  "_id": {
+    "$oid": "000000000000000000000001"
+  },
+  "word": "apple",
+  "createdAt": "2025-05-15T10:00:00Z",
+  "public": true
+},
+{
+  "_id": {
+    "$oid": "000000000000000000000002"
+  },
+  "word": "banana",
+  "createdAt": "2025-05-15T10:01:00Z",
+  "public": true
+},
+{
+  "_id": {
+    "$oid": "000000000000000000000003"
+  },
+  "word": "cat",
+  "createdAt": "2025-05-15T10:02:00Z",
+  "public": false
+},
+{
+  "_id": {
+    "$oid": "000000000000000000000004"
+  },
+  "word": "dog",
+  "createdAt": "2025-05-15T10:03:00Z",
+  "public": true
+},
+{
+  "_id": {
+    "$oid": "000000000000000000000005"
+  },
+  "word": "elephant",
+  "createdAt": "2025-05-15T10:04:00Z",
+  "public": false
+},
+{
+  "_id": {
+    "$oid": "000000000000000000000006"
+  },
+  "word": "frog",
+  "createdAt": "2025-05-15T10:05:00Z",
+  "public": true
+},
+{
+  "_id": {
+    "$oid": "000000000000000000000007"
+  },
+  "word": "giraffe",
+  "createdAt": "2025-05-15T10:06:00Z",
+  "public": true
+},
+{
+  "_id": {
+    "$oid": "000000000000000000000008"
+  },
+  "word": "hat",
+  "createdAt": "2025-05-15T10:07:00Z",
+  "public": false
+},
+{
+  "_id": {
+    "$oid": "000000000000000000000009"
+  },
+  "word": "ice",
+  "createdAt": "2025-05-15T10:08:00Z",
+  "public": true
+},
+{
+  "_id": {
+    "$oid": "00000000000000000000000a"
+  },
+  "word": "jungle",
+  "createdAt": "2025-05-15T10:09:00Z",
+  "public": true
+},
+{
+  "_id": {
+    "$oid": "00000000000000000000000b"
+  },
+  "word": "kite",
+  "createdAt": "2025-05-15T10:10:00Z",
+  "public": false
+},
+{
+  "_id": {
+    "$oid": "00000000000000000000000c"
+  },
+  "word": "lion",
+  "createdAt": "2025-05-15T10:11:00Z",
+  "public": true
+},
+{
+  "_id": {
+    "$oid": "00000000000000000000000d"
+  },
+  "word": "monkey",
+  "createdAt": "2025-05-15T10:12:00Z",
+  "public": true
+},
+{
+  "_id": {
+    "$oid": "00000000000000000000000e"
+  },
+  "word": "notebook",
+  "createdAt": "2025-05-15T10:13:00Z",
+  "public": false
+},
+{
+  "_id": {
+    "$oid": "00000000000000000000000f"
+  },
+  "word": "orange",
+  "createdAt": "2025-05-15T10:14:00Z",
+  "public": true
+},
+{
+  "_id": {
+    "$oid": "000000000000000000000010"
+  },
+  "word": "pencil",
+  "createdAt": "2025-05-15T10:15:00Z",
+  "public": false
+},
+{
+  "_id": {
+    "$oid": "000000000000000000000011"
+  },
+  "word": "queen",
+  "createdAt": "2025-05-15T10:16:00Z",
+  "public": true
+},
+{
+  "_id": {
+    "$oid": "000000000000000000000012"
+  },
+  "word": "rose",
+  "createdAt": "2025-05-15T10:17:00Z",
+  "public": true
+},
+{
+  "_id": {
+    "$oid": "000000000000000000000013"
+  },
+  "word": "sun",
+  "createdAt": "2025-05-15T10:18:00Z",
+  "public": false
+},
+{
+  "_id": {
+    "$oid": "000000000000000000000014"
+  },
+  "word": "tree",
+  "createdAt": "2025-05-15T10:19:00Z",
+  "public": true
+},
+{
+  "_id": {
+    "$oid": "000000000000000000000015"
+  },
+  "word": "umbrella",
+  "createdAt": "2025-05-15T10:20:00Z",
+  "public": false
+},
+{
+  "_id": {
+    "$oid": "000000000000000000000016"
+  },
+  "word": "vase",
+  "createdAt": "2025-05-15T10:21:00Z",
+  "public": true
+},
+{
+  "_id": {
+    "$oid": "000000000000000000000017"
+  },
+  "word": "whale",
+  "createdAt": "2025-05-15T10:22:00Z",
+  "public": true
+},
+{
+  "_id": {
+    "$oid": "000000000000000000000018"
+  },
+  "word": "xylophone",
+  "createdAt": "2025-05-15T10:23:00Z",
+  "public": false
+},
+{
+  "_id": {
+    "$oid": "000000000000000000000019"
+  },
+  "word": "yacht",
+  "createdAt": "2025-05-15T10:24:00Z",
+  "public": true
+},
+{
+  "_id": {
+    "$oid": "00000000000000000000001a"
+  },
+  "word": "zebra",
+  "createdAt": "2025-05-15T10:25:00Z",
+  "public": true
+},
+{
+  "_id": {
+    "$oid": "00000000000000000000001b"
+  },
+  "word": "book",
+  "createdAt": "2025-05-15T10:26:00Z",
+  "public": false
+},
+{
+  "_id": {
+    "$oid": "00000000000000000000001c"
+  },
+  "word": "lamp",
+  "createdAt": "2025-05-15T10:27:00Z",
+  "public": true
+},
+{
+  "_id": {
+    "$oid": "00000000000000000000001d"
+  },
+  "word": "clock",
+  "createdAt": "2025-05-15T10:28:00Z",
+  "public": false
+},
+{
+  "_id": {
+    "$oid": "00000000000000000000001e"
+  },
+  "word": "drum",
+  "createdAt": "2025-05-15T10:29:00Z",
+  "public": true
+},
+{
+  "_id": {
+    "$oid": "68356cb9effcf6f5172e60f7"
+  },
+  "word": "Nikita",
+  "public": true,
+  "createdAt": {
+    "$date": "2025-05-27T07:41:45.159Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68357610afae4f6e9ff6be27"
+  },
+  "word": "Marco",
+  "public": true,
+  "createdAt": {
+    "$date": "2025-05-27T08:21:36.876Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68358e02b6ff152a5fbef312"
+  },
+  "word": "Mike",
+  "public": true,
+  "createdAt": {
+    "$date": "2025-05-27T10:03:46.466Z"
+  },
+  "__v": 0
+}]

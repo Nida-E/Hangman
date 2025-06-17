@@ -1,0 +1,48 @@
+[{
+  "_id": {
+    "$oid": "683566632032f9c7886adf78"
+  },
+  "admin": false,
+  "username": "test",
+  "email": "test@test.com",
+  "password": "$2b$10$UC3HNrwxYuzV3Ua.UQUl.OmePhV0y7isDpx8qPRwlrvwMe8vKPm4W",
+  "solved": [],
+  "score": 0,
+  "createdAt": {
+    "$date": "2025-05-27T07:14:43.875Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "683566eb2032f9c7886adf7b"
+  },
+  "admin": false,
+  "username": "Abdul",
+  "email": "Abdul@test.com",
+  "password": "$2b$10$ZuAU6ou3uj9TAyz1qYeBoehoLd2aDiSTZaaaAHzSIE7fa2sS0f87m",
+  "solved": [],
+  "score": 0,
+  "createdAt": {
+    "$date": "2025-05-27T07:16:59.637Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "683588859d24417c5e2a9f89"
+  },
+  "admin": true,
+  "username": "admin",
+  "email": "admin",
+  "password": "$2b$10$1WL3ph6yDQrmH/HMpmePZOXt2cRSrsOuLowgYGqAEloNmTaFikb2y",
+  "solved": [],
+  "score": 0,
+  "createdAt": {
+    "$date": "2025-05-27T09:40:21.749Z"
+  },
+  "__v": 0,
+  "lastLogin": {
+    "$date": "2025-05-28T09:50:03.448Z"
+  }
+}]
