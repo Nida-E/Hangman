@@ -1,286 +1,306 @@
 <!DOCTYPE html>
 <html lang="nl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin Login</title>
-    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap"
+      rel="stylesheet"
+    />
     <style>
-        * {
-        font-family: 'Indie Flower', cursive;
-    }
+      * {
+        font-family: "Indie Flower", cursive;
+      }
 
-    button, input {
-        font-family: 'Indie Flower', cursive;
-    }
-        html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            font-family: 'Indie Flower', cursive;
-        }
-        body {
-            display: flex;
-            flex-direction: column;
-            background-image: url('../img/background.png');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
-        }
-        h2 {
-            color: #D9D9D9;
-        }
-        .admin-login-container {
-            text-align: center;
-            width: 90%;
-            max-width: 400px;
-            margin: auto;
-            padding: 1rem;
-            position: relative;
-        }
-        
-        .admin-login-container h2 {
-            font-size: 2.5em;
-            margin-bottom: 0.5rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-        .admin-subtitle {
-            color: #ffcc02;
-            font-size: 1.2em;
-            margin-bottom: 2rem;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-        }
-        .admin-login-container input,
-        .admin-login-container button {
-            width: 100%;
-            padding: 0.8rem;
-            margin: 0.5rem 0;
-            border: none;
-            border-radius: 25px;
-            background-color: rgba(255, 255, 255, 0.9);
-            font-size: 1em;
-            box-sizing: border-box;
-        }
-        .admin-login-container input {
-            border: 2px solid transparent;
-            transition: border-color 0.3s ease;
-        }
-        .admin-login-container input:focus {
-            outline: none;
-            border-color: #86572B;
-            box-shadow: 0 0 10px rgba(255, 107, 107, 0.3);
-        }
-        .admin-login-container button {
-            cursor: pointer;
-            color: white;
-            font-weight: bold;
-            background-color: #86572B;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-        }
-        .admin-login-container button:hover {
-            background-color: #603e1f;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
-        }
-        .admin-login-container button:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
-        }
-        .admin-login-container a {
-            display: block;
-            margin-top: 1rem;
-            color: #D9D9D9;
-            font-size: 1.1em;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        .admin-login-container a:hover {
-            color: #ffcc02;
-            text-decoration: underline;
-        }
-        footer {
-            width: 100%;
-            text-align: center;
-        }
-        footer img {
-            display: block;
-            width: 100%;
-            height: auto;
-            margin: 0;
-        }
-        .error-message {
-            color: #ff6b6b;
-            margin: 0.5rem 0;
-            font-size: 0.9em;
-            background-color: rgba(255, 107, 107, 0.1);
-            padding: 0.5rem;
-            border-radius: 15px;
-            border: 1px solid rgba(255, 107, 107, 0.3);
-        }
-        .success-message {
-            color: #51cf66;
-            margin: 0.5rem 0;
-            font-size: 0.9em;
-            background-color: rgba(81, 207, 102, 0.1);
-            padding: 0.5rem;
-            border-radius: 15px;
-            border: 1px solid rgba(81, 207, 102, 0.3);
-        }
-        .warning-message {
-            color: #ffcc02;
-            margin: 1rem 0;
-            font-size: 0.9em;
-            background-color: rgba(255, 204, 2, 0.1);
-            padding: 1rem;
-            border-radius: 15px;
-            border: 1px solid rgba(255, 204, 2, 0.3);
-        }
-        .terug-knop {
-            position: fixed;
-            bottom: 50px;
-            left: 65px;
-            background-color: rgba(255, 255, 255, 0.8);
-            color: #333;
-            padding: 0.6rem 4.2rem;
-            border-radius: 25px;
-            text-decoration: none;
-            font-size: 1em;
-            font-family: 'Indie Flower', cursive;
-            transition: background-color 0.3s ease;
-            z-index: 1000;
-        }
-        .terug-knop:hover {
-            background-color: rgba(255, 255, 255, 1);
-        }
-        .admin-icon {
-            font-size: 3em;
-            margin-bottom: 1rem;
-        }
+      button,
+      input {
+        font-family: "Indie Flower", cursive;
+      }
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        font-family: "Indie Flower", cursive;
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        background-image: url("../img/background.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+      h2 {
+        color: #d9d9d9;
+      }
+      .admin-login-container {
+        text-align: center;
+        width: 90%;
+        max-width: 400px;
+        margin: auto;
+        padding: 1rem;
+        position: relative;
+      }
+
+      .admin-login-container h2 {
+        font-size: 2.5em;
+        margin-bottom: 0.5rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+      .admin-subtitle {
+        color: #ffcc02;
+        font-size: 1.2em;
+        margin-bottom: 2rem;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+      }
+      .admin-login-container input,
+      .admin-login-container button {
+        width: 100%;
+        padding: 0.8rem;
+        margin: 0.5rem 0;
+        border: none;
+        border-radius: 25px;
+        background-color: rgba(255, 255, 255, 0.9);
+        font-size: 1em;
+        box-sizing: border-box;
+      }
+      .admin-login-container input {
+        border: 2px solid transparent;
+        transition: border-color 0.3s ease;
+      }
+      .admin-login-container input:focus {
+        outline: none;
+        border-color: #86572b;
+        box-shadow: 0 0 10px rgba(255, 107, 107, 0.3);
+      }
+      .admin-login-container button {
+        cursor: pointer;
+        color: white;
+        font-weight: bold;
+        background-color: #86572b;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+      }
+      .admin-login-container button:hover {
+        background-color: #603e1f;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+      }
+      .admin-login-container button:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        transform: none;
+      }
+      .admin-login-container a {
+        display: block;
+        margin-top: 1rem;
+        color: #d9d9d9;
+        font-size: 1.1em;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+      .admin-login-container a:hover {
+        color: #ffcc02;
+        text-decoration: underline;
+      }
+      footer {
+        width: 100%;
+        text-align: center;
+      }
+      footer img {
+        display: block;
+        width: 100%;
+        height: auto;
+        margin: 0;
+      }
+      .error-message {
+        color: #ff6b6b;
+        margin: 0.5rem 0;
+        font-size: 0.9em;
+        background-color: rgba(255, 107, 107, 0.1);
+        padding: 0.5rem;
+        border-radius: 15px;
+        border: 1px solid rgba(255, 107, 107, 0.3);
+      }
+      .success-message {
+        color: #51cf66;
+        margin: 0.5rem 0;
+        font-size: 0.9em;
+        background-color: rgba(81, 207, 102, 0.1);
+        padding: 0.5rem;
+        border-radius: 15px;
+        border: 1px solid rgba(81, 207, 102, 0.3);
+      }
+      .warning-message {
+        color: #ffcc02;
+        margin: 1rem 0;
+        font-size: 0.9em;
+        background-color: rgba(255, 204, 2, 0.1);
+        padding: 1rem;
+        border-radius: 15px;
+        border: 1px solid rgba(255, 204, 2, 0.3);
+      }
+      .terug-knop {
+        position: fixed;
+        bottom: 50px;
+        left: 65px;
+        background-color: rgba(255, 255, 255, 0.8);
+        color: #333;
+        padding: 0.6rem 4.2rem;
+        border-radius: 25px;
+        text-decoration: none;
+        font-size: 1em;
+        font-family: "Indie Flower", cursive;
+        transition: background-color 0.3s ease;
+        z-index: 1000;
+      }
+      .terug-knop:hover {
+        background-color: rgba(255, 255, 255, 1);
+      }
+      .admin-icon {
+        font-size: 3em;
+        margin-bottom: 1rem;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="admin-login-container">
-        <div class="admin-icon">👑</div>
-        <h2>Admin Login</h2>
-        <div class="admin-subtitle">Beheerderspaneel Toegang</div>
-        
-        <div class="warning-message">
-            ⚠️ <strong>Alleen voor beheerders!</strong><br>
-            Deze pagina is alleen toegankelijk voor gebruikers met admin rechten.
-        </div>
-        
-        <form id="adminLoginForm">
-            <input type="email" id="adminEmail" placeholder="Admin Email" required>
-            <input type="password" id="adminPassword" placeholder="Admin Wachtwoord" required>
-            <button type="submit" id="adminLoginBtn">🔐 Admin Inloggen</button>
-        </form>
-        <div id="message"></div>
-        
-        <div style="margin-top: 2rem; font-size: 0.8em; color: #999;">
-            <strong>Test Admin Account:</strong><br>
-            Email: admin@test.com<br>
-            Password: admin123
-        </div>
+      <div class="admin-icon">👑</div>
+      <h2>Admin Login</h2>
+      <div class="admin-subtitle">Beheerderspaneel Toegang</div>
+
+      <div class="warning-message">
+        ⚠️ <strong>Alleen voor beheerders!</strong><br />
+        Deze pagina is alleen toegankelijk voor gebruikers met admin rechten.
+      </div>
+
+      <form id="adminLoginForm">
+        <input
+          type="email"
+          id="adminEmail"
+          placeholder="Admin Email"
+          required
+        />
+        <input
+          type="password"
+          id="adminPassword"
+          placeholder="Admin Wachtwoord"
+          required
+        />
+        <button type="submit" id="adminLoginBtn">🔐 Admin Inloggen</button>
+      </form>
+      <div id="message"></div>
+
+      <div style="margin-top: 2rem; font-size: 0.8em; color: #999">
+        <strong>Test Admin Account:</strong><br />
+        Email: admin@test.com<br />
+        Password: admin123
+      </div>
     </div>
 
     <footer>
-        <img src="../img/footer.png" alt="footer">
+      <img src="../img/footer.png" alt="footer" />
     </footer>
 
     <script>
-        const API_BASE_URL = 'http://localhost:4000';
+      const API_BASE_URL = "https://hmapi.izkuipers.nl";
 
-        document.getElementById('adminLoginForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            const email = document.getElementById('adminEmail').value;
-            const password = document.getElementById('adminPassword').value;
-            const messageDiv = document.getElementById('message');
-            const loginBtn = document.getElementById('adminLoginBtn');
-            
-            loginBtn.disabled = true;
-            loginBtn.innerHTML = '🔄 Checking Admin Rights...';
-            messageDiv.innerHTML = '';
-            
-            try {
-                const response = await fetch(`${API_BASE_URL}/login`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        email: email,
-                        password: password
-                    })
-                });
+      document
+        .getElementById("adminLoginForm")
+        .addEventListener("submit", async function (e) {
+          e.preventDefault();
 
-                const data = await response.json();
+          const email = document.getElementById("adminEmail").value;
+          const password = document.getElementById("adminPassword").value;
+          const messageDiv = document.getElementById("message");
+          const loginBtn = document.getElementById("adminLoginBtn");
 
-                if (response.ok) {
-                    // Check if user has admin rights
-                    if (data.user.admin || email.toLowerCase().includes('admin')) {
-                        messageDiv.innerHTML = '<div class="success-message">👑 Admin login succesvol! Welkom beheerder...</div>';
-                        
-                        localStorage.setItem('token', data.token);
-                        localStorage.setItem('user', JSON.stringify(data.user));
-                        localStorage.setItem('isAdmin', 'true');
-                        
-                        setTimeout(() => {
-                            window.location.href = 'admin.html';
-                        }, 2000);
-                    } else {
-                        messageDiv.innerHTML = '<div class="error-message">🚫 Geen admin rechten! Je bent ingelogd maar hebt geen beheerdersrechten.</div>';
-                        
-                        // Still save login but redirect to normal dashboard
-                        localStorage.setItem('token', data.token);
-                        localStorage.setItem('user', JSON.stringify(data.user));
-                        
-                        setTimeout(() => {
-                            window.location.href = 'dashboard.html';
-                        }, 3000);
-                    }
-                } else {
-                    messageDiv.innerHTML = `<div class="error-message">❌ ${data.msg}</div>`;
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                messageDiv.innerHTML = '<div class="error-message">🚫 Kan niet verbinden met server. Zorg dat backend draait op poort 4000.</div>';
-            } finally {
-                loginBtn.disabled = false;
-                loginBtn.innerHTML = '🔐 Admin Inloggen';
+          loginBtn.disabled = true;
+          loginBtn.innerHTML = "🔄 Checking Admin Rights...";
+          messageDiv.innerHTML = "";
+
+          try {
+            const response = await fetch(`${API_BASE_URL}/login`, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                email: email,
+                password: password,
+              }),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+              // Check if user has admin rights
+              if (data.user.admin || email.toLowerCase().includes("admin")) {
+                messageDiv.innerHTML =
+                  '<div class="success-message">👑 Admin login succesvol! Welkom beheerder...</div>';
+
+                localStorage.setItem("token", data.token);
+                localStorage.setItem("user", JSON.stringify(data.user));
+                localStorage.setItem("isAdmin", "true");
+
+                setTimeout(() => {
+                  window.location.href = "admin.html";
+                }, 2000);
+              } else {
+                messageDiv.innerHTML =
+                  '<div class="error-message">🚫 Geen admin rechten! Je bent ingelogd maar hebt geen beheerdersrechten.</div>';
+
+                // Still save login but redirect to normal dashboard
+                localStorage.setItem("token", data.token);
+                localStorage.setItem("user", JSON.stringify(data.user));
+
+                setTimeout(() => {
+                  window.location.href = "dashboard.html";
+                }, 3000);
+              }
+            } else {
+              messageDiv.innerHTML = `<div class="error-message">❌ ${data.msg}</div>`;
             }
+          } catch (error) {
+            console.error("Error:", error);
+            messageDiv.innerHTML =
+              '<div class="error-message">🚫 Kan niet verbinden met server. Zorg dat backend draait op poort 4000.</div>';
+          } finally {
+            loginBtn.disabled = false;
+            loginBtn.innerHTML = "🔐 Admin Inloggen";
+          }
         });
 
-        // Auto-create admin user for testing
-        window.addEventListener('load', async function() {
-            try {
-                // Try to register test admin user
-                await fetch(`${API_BASE_URL}/register`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        email: 'admin@test.com',
-                        username: 'Admin',
-                        password: 'admin123'
-                    })
-                });
-            } catch (error) {
-                // Ignore if user already exists
-            }
-        });
-
-        // Check if already logged in as admin
-        const currentUser = JSON.parse(localStorage.getItem('user') || '{}');
-        const isAdmin = localStorage.getItem('isAdmin') === 'true';
-        
-        if (currentUser.id && isAdmin) {
-            window.location.href = 'admin.html';
+      // Auto-create admin user for testing
+      window.addEventListener("load", async function () {
+        try {
+          // Try to register test admin user
+          await fetch(`${API_BASE_URL}/register`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              email: "admin@test.com",
+              username: "Admin",
+              password: "admin123",
+            }),
+          });
+        } catch (error) {
+          // Ignore if user already exists
         }
+      });
+
+      // Check if already logged in as admin
+      const currentUser = JSON.parse(localStorage.getItem("user") || "{}");
+      const isAdmin = localStorage.getItem("isAdmin") === "true";
+
+      if (currentUser.id && isAdmin) {
+        window.location.href = "admin.html";
+      }
     </script>
-</body>
+  </body>
 </html>

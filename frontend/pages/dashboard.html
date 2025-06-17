@@ -1,305 +1,323 @@
 <!DOCTYPE html>
 <html lang="nl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard</title>
-    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap"
+      rel="stylesheet"
+    />
     <style>
-        * {
-        font-family: 'Indie Flower', cursive;
-    }
+      * {
+        font-family: "Indie Flower", cursive;
+      }
 
-    button, input {
-        font-family: 'Indie Flower', cursive;
-    }
+      button,
+      input {
+        font-family: "Indie Flower", cursive;
+      }
 
-        html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            font-family: 'Indie Flower', cursive;
-        }
-        body {
-            display: flex;
-            flex-direction: column;
-            background-image: url('../img/background.png');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
-        }
-        h2 {
-            color: #D9D9D9;
-        }
-        .nieuwwoord-container {
-            text-align: center;
-            width: 90%;
-            max-width: 400px;
-            margin: auto;
-            padding: 1rem;
-        }
-        .nieuwwoord-container h2 {
-            font-size: 2em;
-            margin-bottom: 1rem;
-        }
-        .nieuwwoord-container input,
-        .nieuwwoord-container button {
-            width: 100%;
-            padding: 0.8rem;
-            margin: 0.5rem 0;
-            border: none;
-            border-radius: 25px;
-            background-color: rgba(255, 255, 255, 0.8);
-            font-size: 1em;
-            box-sizing: border-box;
-        }
-        .nieuwwoord-container button {
-            cursor: pointer;
-        }
-        .nieuwwoord-container button:hover {
-            background-color: rgba(255, 255, 255, 1);
-        }
-        .nieuwwoord-container button:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-        }
-        .nieuwwoord-container a {
-            display: block;
-            margin-top: 1rem;
-            color: #D9D9D9;
-            font-size: 1.2em;
-        }
-        .nieuwwoord-container a:hover {
-            text-decoration: underline;
-        }
-        footer {
-            width: 100%;
-            text-align: center;
-        }
-        footer img {
-            display: block;
-            width: 100%;
-            height: auto;
-            margin: 0;
-        }
-        .uitloggen-knop {
-            position: fixed;
-            top: 30px;
-            left: 30px;
-            background-color: rgba(255, 255, 255, 0.8);
-            color: #333;
-            padding: 0.4rem 1.8rem;
-            border-radius: 25px;
-            text-decoration: none;
-            font-size: 1em;
-            font-family: 'Indie Flower', cursive;
-            transition: background-color 0.3s ease;
-            z-index: 1000;
-            cursor: pointer;
-        }
-        .uitloggen-knop:hover {
-            background-color: rgba(255, 255, 255, 1);
-        }
-        .terug-knop {
-            position: fixed;
-            bottom: 50px;
-            left: 65px;
-            background-color: rgba(255, 255, 255, 0.8);
-            color: #333;
-            padding: 0.6rem 4.2rem;
-            border-radius: 25px;
-            text-decoration: none;
-            font-size: 1em;
-            font-family: 'Indie Flower', cursive;
-            transition: background-color 0.3s ease;
-            z-index: 1000;
-        }
-        .terug-knop:hover {
-            background-color: rgba(255, 255, 255, 1);
-        }
-        .error-message {
-            color: #ff6b6b;
-            margin: 0.5rem 0;
-            font-size: 0.9em;
-            background-color: rgba(255, 107, 107, 0.1);
-            padding: 0.5rem;
-            border-radius: 15px;
-        }
-        .success-message {
-            color: #51cf66;
-            margin: 0.5rem 0;
-            font-size: 0.9em;
-            background-color: rgba(81, 207, 102, 0.1);
-            padding: 0.5rem;
-            border-radius: 15px;
-        }
-        .words-list {
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 15px;
-            padding: 1rem;
-            margin-top: 1rem;
-            max-height: 150px;
-            overflow-y: auto;
-        }
-        .word-item {
-            padding: 0.3rem;
-            margin: 0.2rem 0;
-            background-color: rgba(0, 0, 0, 0.1);
-            border-radius: 5px;
-            font-size: 0.9em;
-        }
-        .user-welcome {
-            position: fixed;
-            top: 30px;
-            right: 30px;
-            background-color: rgba(255, 255, 255, 0.8);
-            color: #333;
-            padding: 0.4rem 1.8rem;
-            border-radius: 25px;
-            font-size: 1em;
-            font-family: 'Indie Flower', cursive;
-            z-index: 1000;
-        }
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        font-family: "Indie Flower", cursive;
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        background-image: url("../img/background.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+      h2 {
+        color: #d9d9d9;
+      }
+      .nieuwwoord-container {
+        text-align: center;
+        width: 90%;
+        max-width: 400px;
+        margin: auto;
+        padding: 1rem;
+      }
+      .nieuwwoord-container h2 {
+        font-size: 2em;
+        margin-bottom: 1rem;
+      }
+      .nieuwwoord-container input,
+      .nieuwwoord-container button {
+        width: 100%;
+        padding: 0.8rem;
+        margin: 0.5rem 0;
+        border: none;
+        border-radius: 25px;
+        background-color: rgba(255, 255, 255, 0.8);
+        font-size: 1em;
+        box-sizing: border-box;
+      }
+      .nieuwwoord-container button {
+        cursor: pointer;
+      }
+      .nieuwwoord-container button:hover {
+        background-color: rgba(255, 255, 255, 1);
+      }
+      .nieuwwoord-container button:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+      .nieuwwoord-container a {
+        display: block;
+        margin-top: 1rem;
+        color: #d9d9d9;
+        font-size: 1.2em;
+      }
+      .nieuwwoord-container a:hover {
+        text-decoration: underline;
+      }
+      footer {
+        width: 100%;
+        text-align: center;
+      }
+      footer img {
+        display: block;
+        width: 100%;
+        height: auto;
+        margin: 0;
+      }
+      .uitloggen-knop {
+        position: fixed;
+        top: 30px;
+        left: 30px;
+        background-color: rgba(255, 255, 255, 0.8);
+        color: #333;
+        padding: 0.4rem 1.8rem;
+        border-radius: 25px;
+        text-decoration: none;
+        font-size: 1em;
+        font-family: "Indie Flower", cursive;
+        transition: background-color 0.3s ease;
+        z-index: 1000;
+        cursor: pointer;
+      }
+      .uitloggen-knop:hover {
+        background-color: rgba(255, 255, 255, 1);
+      }
+      .terug-knop {
+        position: fixed;
+        bottom: 50px;
+        left: 65px;
+        background-color: rgba(255, 255, 255, 0.8);
+        color: #333;
+        padding: 0.6rem 4.2rem;
+        border-radius: 25px;
+        text-decoration: none;
+        font-size: 1em;
+        font-family: "Indie Flower", cursive;
+        transition: background-color 0.3s ease;
+        z-index: 1000;
+      }
+      .terug-knop:hover {
+        background-color: rgba(255, 255, 255, 1);
+      }
+      .error-message {
+        color: #ff6b6b;
+        margin: 0.5rem 0;
+        font-size: 0.9em;
+        background-color: rgba(255, 107, 107, 0.1);
+        padding: 0.5rem;
+        border-radius: 15px;
+      }
+      .success-message {
+        color: #51cf66;
+        margin: 0.5rem 0;
+        font-size: 0.9em;
+        background-color: rgba(81, 207, 102, 0.1);
+        padding: 0.5rem;
+        border-radius: 15px;
+      }
+      .words-list {
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 15px;
+        padding: 1rem;
+        margin-top: 1rem;
+        max-height: 150px;
+        overflow-y: auto;
+      }
+      .word-item {
+        padding: 0.3rem;
+        margin: 0.2rem 0;
+        background-color: rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        font-size: 0.9em;
+      }
+      .user-welcome {
+        position: fixed;
+        top: 30px;
+        right: 30px;
+        background-color: rgba(255, 255, 255, 0.8);
+        color: #333;
+        padding: 0.4rem 1.8rem;
+        border-radius: 25px;
+        font-size: 1em;
+        font-family: "Indie Flower", cursive;
+        z-index: 1000;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <a onclick="logout()" class="uitloggen-knop">Uitloggen</a>
     <div class="user-welcome" id="userWelcome">Welkom!</div>
-    
+
     <div class="nieuwwoord-container">
-        <h2>Nieuwe woord</h2>
-        <form id="wordForm">
-            <input type="text" id="wordInput" placeholder="Typ woord" required>
-            <button type="submit" id="addWordBtn">Toevoegen</button>
-        </form>
-        <div id="message"></div>
-        
-        <div id="wordsList" class="words-list">
-            <div>Woorden worden geladen...</div>
-        </div>
-        
-        <a href="gamescherm.html">🎮 Start Hangman Spel</a>
-        <a href="scorebord.html">🏆 Bekijk Scorebord</a>
+      <h2>Nieuwe woord</h2>
+      <form id="wordForm">
+        <input type="text" id="wordInput" placeholder="Typ woord" required />
+        <button type="submit" id="addWordBtn">Toevoegen</button>
+      </form>
+      <div id="message"></div>
+
+      <div id="wordsList" class="words-list">
+        <div>Woorden worden geladen...</div>
+      </div>
+
+      <a href="gamescherm.html">🎮 Start Hangman Spel</a>
+      <a href="scorebord.html">🏆 Bekijk Scorebord</a>
     </div>
 
     <footer>
-        <img src="../img/footer.png" alt="footer">
+      <img src="../img/footer.png" alt="footer" />
     </footer>
-    
+
     <a href="dashboard.html" class="terug-knop">← Terug</a>
 
     <script>
-        const API_BASE_URL = 'http://localhost:4000';
+      const API_BASE_URL = "https://hmapi.izkuipers.nl";
 
-        // Check authentication
-        function checkAuth() {
-            const token = localStorage.getItem('token');
-            if (!token) {
-                window.location.href = 'loginscherm.html';
-                return false;
-            }
-            return token;
+      // Check authentication
+      function checkAuth() {
+        const token = localStorage.getItem("token");
+        if (!token) {
+          window.location.href = "loginscherm.html";
+          return false;
         }
+        return token;
+      }
 
-        // Logout function
-        function logout() {
-            localStorage.removeItem('token');
-            localStorage.removeItem('user');
-            window.location.href = 'loginscherm.html';
+      // Logout function
+      function logout() {
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+        window.location.href = "loginscherm.html";
+      }
+
+      // Display user welcome message
+      function displayUserWelcome() {
+        const user = JSON.parse(localStorage.getItem("user") || "{}");
+        const welcomeDiv = document.getElementById("userWelcome");
+        if (user.username) {
+          welcomeDiv.textContent = `Welkom, ${user.username}!`;
         }
+      }
 
-        // Display user welcome message
-        function displayUserWelcome() {
-            const user = JSON.parse(localStorage.getItem('user') || '{}');
-            const welcomeDiv = document.getElementById('userWelcome');
-            if (user.username) {
-                welcomeDiv.textContent = `Welkom, ${user.username}!`;
-            }
+      // Load all words
+      async function loadWords() {
+        try {
+          const response = await fetch(`${API_BASE_URL}/`);
+          const words = await response.json();
+
+          const wordsList = document.getElementById("wordsList");
+          if (words.length === 0) {
+            wordsList.innerHTML = "<div>Nog geen woorden toegevoegd 😔</div>";
+          } else {
+            wordsList.innerHTML = words
+              .map(
+                (word) =>
+                  `<div class="word-item">📝 ${word.word} ${
+                    word.public ? "(Publiek)" : "(Privé)"
+                  }</div>`
+              )
+              .join("");
+          }
+        } catch (error) {
+          console.error("Error loading words:", error);
+          document.getElementById("wordsList").innerHTML =
+            "<div>❌ Error bij laden van woorden</div>";
         }
+      }
 
-        // Load all words
-        async function loadWords() {
-            try {
-                const response = await fetch(`${API_BASE_URL}/`);
-                const words = await response.json();
-                
-                const wordsList = document.getElementById('wordsList');
-                if (words.length === 0) {
-                    wordsList.innerHTML = '<div>Nog geen woorden toegevoegd 😔</div>';
-                } else {
-                    wordsList.innerHTML = words.map(word => 
-                        `<div class="word-item">📝 ${word.word} ${word.public ? '(Publiek)' : '(Privé)'}</div>`
-                    ).join('');
-                }
-            } catch (error) {
-                console.error('Error loading words:', error);
-                document.getElementById('wordsList').innerHTML = '<div>❌ Error bij laden van woorden</div>';
+      // Add new word
+      document
+        .getElementById("wordForm")
+        .addEventListener("submit", async function (e) {
+          e.preventDefault();
+
+          const token = checkAuth();
+          if (!token) return;
+
+          const word = document.getElementById("wordInput").value.trim();
+          const messageDiv = document.getElementById("message");
+          const addWordBtn = document.getElementById("addWordBtn");
+
+          if (!word) {
+            messageDiv.innerHTML =
+              '<div class="error-message">Voer een woord in!</div>';
+            return;
+          }
+
+          addWordBtn.disabled = true;
+          addWordBtn.textContent = "Toevoegen...";
+          messageDiv.innerHTML = "";
+
+          try {
+            const response = await fetch(`${API_BASE_URL}/create`, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+              },
+              body: JSON.stringify({
+                word: word,
+                public: true,
+              }),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+              messageDiv.innerHTML =
+                '<div class="success-message">✅ Woord succesvol toegevoegd!</div>';
+              document.getElementById("wordInput").value = "";
+              loadWords(); // Reload the word list
+
+              // Clear success message after 3 seconds
+              setTimeout(() => {
+                messageDiv.innerHTML = "";
+              }, 3000);
+            } else {
+              messageDiv.innerHTML = `<div class="error-message">❌ ${
+                data.msg || "Error bij toevoegen"
+              }</div>`;
             }
-        }
-
-        // Add new word
-        document.getElementById('wordForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            const token = checkAuth();
-            if (!token) return;
-            
-            const word = document.getElementById('wordInput').value.trim();
-            const messageDiv = document.getElementById('message');
-            const addWordBtn = document.getElementById('addWordBtn');
-            
-            if (!word) {
-                messageDiv.innerHTML = '<div class="error-message">Voer een woord in!</div>';
-                return;
-            }
-            
-            addWordBtn.disabled = true;
-            addWordBtn.textContent = 'Toevoegen...';
-            messageDiv.innerHTML = '';
-            
-            try {
-                const response = await fetch(`${API_BASE_URL}/create`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${token}`
-                    },
-                    body: JSON.stringify({
-                        word: word,
-                        public: true
-                    })
-                });
-
-                const data = await response.json();
-
-                if (response.ok) {
-                    messageDiv.innerHTML = '<div class="success-message">✅ Woord succesvol toegevoegd!</div>';
-                    document.getElementById('wordInput').value = '';
-                    loadWords(); // Reload the word list
-                    
-                    // Clear success message after 3 seconds
-                    setTimeout(() => {
-                        messageDiv.innerHTML = '';
-                    }, 3000);
-                } else {
-                    messageDiv.innerHTML = `<div class="error-message">❌ ${data.msg || 'Error bij toevoegen'}</div>`;
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                messageDiv.innerHTML = '<div class="error-message">🚫 Kan niet verbinden met server</div>';
-            } finally {
-                addWordBtn.disabled = false;
-                addWordBtn.textContent = 'Toevoegen';
-            }
+          } catch (error) {
+            console.error("Error:", error);
+            messageDiv.innerHTML =
+              '<div class="error-message">🚫 Kan niet verbinden met server</div>';
+          } finally {
+            addWordBtn.disabled = false;
+            addWordBtn.textContent = "Toevoegen";
+          }
         });
 
-        // Initialize page
-        window.addEventListener('load', function() {
-            if (checkAuth()) {
-                displayUserWelcome();
-                loadWords();
-            }
-        });
+      // Initialize page
+      window.addEventListener("load", function () {
+        if (checkAuth()) {
+          displayUserWelcome();
+          loadWords();
+        }
+      });
     </script>
-</body>
+  </body>
 </html>
